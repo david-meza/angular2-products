@@ -1,2 +1,3 @@
 # angular2-quickstart
-Hello World application using Angular2 and TypeScript :)
+
+Tour of Heroes Case Study using Angular2 and TypeScript.
