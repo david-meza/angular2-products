@@ -31,7 +31,7 @@ That’s it! That’s all you really need to have a component. Three things are 
 
 3. We export our `AppComponent` class so that we can import it elsewhere (in this case, we would import it in our main script so we can bootstrap our application).
 
-That’s a good start, but let’s get into a more complex example that showcases other powerful features of Angular and Typescript/ES2015. In the following example, it would be possible to stuff everything into one component, but because we want to use best practices, I will divide our code into different components and services. Without further ado, let’s make a quick page that displays a list of products. Let’s start from the index:
+That’s a good start, but let’s get into a more complex example that showcases other powerful features of Angular and Typescript/ES2015. In the following example I've decided to stuff everything into one component. However, if you'd like to stick to best practices and divide the code into different components and services, or if you get lost at any point you can [check out the finished/refactored example here](https://github.com/david-meza/angular2-products/tree/master). Without any further ado, let’s make a quick page that displays a list of products. Let’s start from the index:
 
 ```html
 <html>
@@ -269,6 +269,4 @@ export class AppComponent implements OnInit {
 Where we get our product data from a service and separate our product detail template into a child component.
 
 Hope you've enjoyed reading this post. Let me know if there's anything I can do to improve it!
-
-
 
