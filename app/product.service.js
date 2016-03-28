@@ -1,4 +1,4 @@
-System.register(['angular2/core', './mock-heroes'], function(exports_1) {
+System.register(['angular2/core', './mock-products'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,35 +8,34 @@ System.register(['angular2/core', './mock-heroes'], function(exports_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, mock_heroes_1;
-    var HeroService;
+    var core_1, mock_products_1;
+    var ProductService;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
             },
-            function (mock_heroes_1_1) {
-                mock_heroes_1 = mock_heroes_1_1;
+            function (mock_products_1_1) {
+                mock_products_1 = mock_products_1_1;
             }],
         execute: function() {
-            HeroService = (function () {
-                function HeroService() {
+            ProductService = (function () {
+                function ProductService() {
                 }
-                HeroService.prototype.getHeroes = function () {
-                    return Promise.resolve(mock_heroes_1.HEROES);
-                };
-                HeroService.prototype.getHeroesSlowly = function () {
+                ProductService.prototype.getProducts = function () {
                     return new Promise(function (resolve) {
-                        return setTimeout(function () { return resolve(mock_heroes_1.HEROES); }, 2000);
-                    });
+                        return setTimeout(function () { return resolve(mock_products_1.PRODUCTS); }, 2000);
+                    } // 2 second delay to simulate a query
+                     // 2 second delay to simulate a query
+                    );
                 };
-                HeroService = __decorate([
+                ProductService = __decorate([
                     core_1.Injectable(), 
                     __metadata('design:paramtypes', [])
-                ], HeroService);
-                return HeroService;
+                ], ProductService);
+                return ProductService;
             })();
-            exports_1("HeroService", HeroService);
+            exports_1("ProductService", ProductService);
         }
     }
 });
