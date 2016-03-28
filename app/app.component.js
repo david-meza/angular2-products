@@ -1,4 +1,4 @@
-System.register(['angular2/core', './product-detail.component', './product.service'], function(exports_1) {
+System.register(['angular2/core'], function(exports_1) {
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -8,46 +8,43 @@ System.register(['angular2/core', './product-detail.component', './product.servi
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, product_detail_component_1, product_service_1;
-    var AppComponent;
+    var core_1;
+    var AppComponent, PRODUCTS;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
-            },
-            function (product_detail_component_1_1) {
-                product_detail_component_1 = product_detail_component_1_1;
-            },
-            function (product_service_1_1) {
-                product_service_1 = product_service_1_1;
             }],
         execute: function() {
             AppComponent = (function () {
-                function AppComponent(_productService) {
-                    this._productService = _productService;
-                    this.title = 'Products';
+                function AppComponent() {
+                    this.title = 'My Products';
+                    this.products = PRODUCTS;
                 }
-                AppComponent.prototype.getProducts = function () {
-                    var _this = this;
-                    this._productService.getProducts().then(function (products) { return _this.products = products; });
-                };
-                AppComponent.prototype.ngOnInit = function () {
-                    this.getProducts();
-                };
                 AppComponent.prototype.onSelect = function (product) { this.selectedProduct = product; };
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        templateUrl: 'app/app.component.html',
-                        styleUrls: ['app/app.component.css'],
-                        directives: [product_detail_component_1.ProductDetailComponent],
-                        providers: [product_service_1.ProductService]
+                        template: "\n  <h1>{{title}}</h1>\n  <ul class=\"products\">\n    <li *ngFor=\"#product of products\"\n      [class.selected]=\"product === selectedProduct\"\n      (click)=\"onSelect(product)\">\n      <span class=\"badge\">{{product.id}}</span> {{product.name}}\n    </li>\n  </ul>\n  <div *ngIf=\"selectedProduct\">\n    <h2>{{selectedProduct.name}} details!</h2>\n    <div><label>id: </label>{{selectedProduct.id}}</div>\n    <div><label>Price: </label>{{selectedProduct.price | currency: 'USD': true }}</div>\n    <div>\n      <label>name: </label>\n      <input [(ngModel)]=\"selectedProduct.name\" placeholder=\"name\"/>\n    </div>\n  </div>\n  ",
+                        styleUrls: ['app/app.component.css']
                     }), 
-                    __metadata('design:paramtypes', [product_service_1.ProductService])
+                    __metadata('design:paramtypes', [])
                 ], AppComponent);
                 return AppComponent;
             })();
             exports_1("AppComponent", AppComponent);
+            PRODUCTS = [
+                { "id": 1, "price": 45.12, "name": "TV Stand" },
+                { "id": 2, "price": 25.12, "name": "BBQ Grill" },
+                { "id": 3, "price": 43.12, "name": "Magic Carpet" },
+                { "id": 4, "price": 12.12, "name": "Instant liquidifier" },
+                { "id": 5, "price": 9.12, "name": "Box of puppies" },
+                { "id": 6, "price": 7.34, "name": "Laptop Desk" },
+                { "id": 7, "price": 5.34, "name": "Water Heater" },
+                { "id": 8, "price": 4.34, "name": "Smart Microwave" },
+                { "id": 9, "price": 93.34, "name": "Circus Elephant" },
+                { "id": 10, "price": 87.34, "name": "Tinted Window" }
+            ];
         }
     }
 });
