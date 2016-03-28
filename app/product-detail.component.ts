@@ -7,6 +7,7 @@ import {Product} from './product';
     <div *ngIf="product">
       <h2>{{product.name}} details!</h2>
       <div><label>id: </label>{{product.id}}</div>
+      <div><label>Price: </label>{{product.price | currency: 'USD': true }}</div>
       <div>
         <label>name: </label>
         <input [(ngModel)]="product.name" placeholder="name"/>

@@ -9,14 +9,28 @@
   width: 15em;
 }
 .products li {
+  position: relative;
+  min-height: 2em;
   cursor: pointer;
   position: relative;
   left: 0;
   background-color: #EEE;
   margin: .5em;
   padding: .3em 0;
-  height: 1.6em;
   border-radius: 4px;
+  font-size: 16px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: #3F51B5;
+  display: block;
+  width: 100%;
+
+  -webkit-transition: all 0.3s ease;
+  -moz-transition:    all 0.3s ease;
+  -o-transition:      all 0.3s ease;
+  -ms-transition:     all 0.3s ease;
+  transition:         all 0.3s ease;
 }
 .products li.selected:hover {
   background-color: #BBD8DC !important;
@@ -26,6 +40,10 @@
   color: #607D8B;
   background-color: #DDD;
   left: .1em;
+  color: #3F51B5;
+  text-decoration: none;
+  font-size: 1.2em;
+  background-color: rgba(0,0,0,0.01);
 }
 .products .text {
   position: relative;
@@ -40,8 +58,8 @@
   line-height: 1em;
   position: relative;
   left: -1px;
-  top: -4px;
-  height: 1.8em;
+  top: 0;
+  height: 2em;
   margin-right: .8em;
   border-radius: 4px 0 0 4px;
 }

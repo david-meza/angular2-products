@@ -29,7 +29,7 @@ System.register(['angular2/core', './product'], function(exports_1) {
                 ProductDetailComponent = __decorate([
                     core_1.Component({
                         selector: 'my-product-detail',
-                        template: "\n    <div *ngIf=\"product\">\n      <h2>{{product.name}} details!</h2>\n      <div><label>id: </label>{{product.id}}</div>\n      <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"product.name\" placeholder=\"name\"/>\n      </div>\n    </div>\n  "
+                        template: "\n    <div *ngIf=\"product\">\n      <h2>{{product.name}} details!</h2>\n      <div><label>id: </label>{{product.id}}</div>\n      <div><label>Price: </label>{{product.price | currency: 'USD': true }}</div>\n      <div>\n        <label>name: </label>\n        <input [(ngModel)]=\"product.name\" placeholder=\"name\"/>\n      </div>\n    </div>\n  "
                     }), 
                     __metadata('design:paramtypes', [])
                 ], ProductDetailComponent);
