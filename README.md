@@ -73,7 +73,7 @@ That’s a good start, but let’s get into a more complex example that showcase
 
 Nothing out of the ordinary going on here. We are just importing all the necessary scripts for our application to work as demonstrated in the quick-start.
 
-Our `app/main.ts` should already look something like this:
+Our `app/main.ts` should already look somewhat like this:
 
 ```javascript
 import {bootstrap} from ‘angular2/platform/browser’
@@ -82,9 +82,9 @@ import {AppComponent} from ‘./app.component’
 bootstrap(AppComponent);
 ```
 
-We are importing the bootstrap function from the Angular 2 package, and our AppComponent class from our local directory. Then we initialize the application.
+We are importing the bootstrap function from the Angular 2 package, and an AppComponent class from the local directory. Then we initialize the application.
 
-First, we will create a product class which will define the constructor and type definition of any products we make. Our `app/product.ts`:
+First, we will create a product class which will define the constructor and type definition of any products we make. Create `app/product.ts`:
 
 ```javascript
 export class Product {
@@ -94,7 +94,7 @@ export class Product {
 }
 ```
 
-Now we will create an `app.component.ts` is where the most of the magic happens. I've decided to stuff everything in here for demonstration purposes, but ideally you would want to extract the products array into its own service, the inline HTML into its own template file, and the product details into its own component. This is how our component will look like:
+Next, we will create an `app.component.ts` file which is where the most of the magic happens. I've decided to stuff everything in here for demonstration purposes, but ideally you would want to extract the products array into its own service, the HTML template into its own file, and the product details into its own component. This is how the component will look like:
 
 ```javascript
 import {Component} from 'angular2/core';
@@ -219,17 +219,17 @@ And `app/app.component.css`:
 
 I'll explain what is happening:
 
-1. We import from Component so that we can decorate our new component, and Product so we can create an array of products and have access to Typescript type infererences.
+1. We import from Component so that we can decorate our new component, and we import Product so we can create an array of products and have access to Typescript type infererences.
 
-2. We decorate our component with the following properties: selector 'my-app' finds `<my-app></my-app>` tags and inserts our component there. I decided to define template in this file instead of using a url so I can demonstrate how handy is the ES2015 template string syntax (no more long strings or plus-separated strings). StyleUrls use an absolute file path, and any styles applied will only affect the template in this scope.
+2. We decorate our component with a selector property 'my-app' that finds `<my-app></my-app>` tags and inserts our component there. I decided to define template in this file instead of using a url so I can demonstrate how handy is the ES2015 template string syntax (no more long strings or plus-separated strings). Finally, the styleUrls property uses an absolute file path, and any styles applied will only affect the template in this scope.
 
-3. Our actual component just has a few properties. A `title` that we can bind to our template, a `products` array that we will iterate in our markup, a `selectedProduct` that is a scope variable that will initialize as undefined, and `onSelect` method that will be run every time we click on a list item.
+3. The actual component only has a few properties outside of the decorator configuration: It has a `title` that we can bind to our template, a `products` array that we will iterate in our markup, a `selectedProduct` that is a scope variable that will initialize as undefined, and a `onSelect` method that will be run every time we click on a list item.
 
-4. We define a constant (const because I've hard-coded it in and won't change) `PRODUCTS` to mock an object that is usually returned by a service after an external request.
+4. Finally, we define a constant (`const` because I've hard-coded it in and won't change in runtime) `PRODUCTS` to mock an object that is usually returned by a service after an external request.
 
 Also worth noting:
 
-* Since we are using Typescript we can make inferences about what type of data will our variables hold. For example, you can see I defined type `Product` whenever we know that's the only kind of object we want to allow for that variable or function.
+* Since we are using Typescript we can make inferences about what type of data will our variables hold. For example, you may have noticed I defined type `Product` whenever I know that this the only kind of object I want to allow for that variable or to be passed to a function.
 
 * Angular 2 has different property prefixes and if you would like to learn when to use each one, you can check out [this Stack Overflow question](http://stackoverflow.com/questions/35944749/what-is-the-difference-between-parentheses-brackets-and-asterisks-in-angular2?answertab=votes#tab-top).
 
@@ -266,7 +266,7 @@ export class AppComponent implements OnInit {
 }
 ```
 
-Where we get our product data from a service and separate our product detail template into a child component.
+In this example, we get our product data from a service and separate our product detail template into a child component, which is much more modular.
 
-Hope you've enjoyed reading this post. Let me know if there's anything I can do to improve it!
+Hope you've enjoyed reading this post. I spent a lot of time reading the Angular docs and tried to make a concise post out of what I learned. Let me know if there's anything I can do to improve it!
 
