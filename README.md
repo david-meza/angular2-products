@@ -4,7 +4,7 @@ How to write an Angular 2 Component
 
 The Angular team introduced quite a few changes in version 2 of the framework, and components are one of the important ones. If you are familiar with Angular 1 applications, components are actually a form of directives that have been extended with template-oriented features. In addition, components are optimized for better performance and simpler configuration than a directive since it doesn’t support all its features. And, while a component is technically a directive, it is so distinctive and central to Angular 2 applications that you’ll find it is often separated as a different ingredient for the architecture of an application.
 
-So, what is a component? In simple words, a component is a building block of an application that controls a part of your screen real estate, or your “view.” It does one thing and it does it well. For example, you may have a component to display a list of active chats in a messaging app (which in turn may have a child components to display the details of the chat or the actual conversation). Or, you may have an input field that uses Angular’s two-way data binding to keep your markup in sync with your Javascript. Or, at the most elementary level, you can have a component that substitutes with an HTML template with no special functionality just because you wanted to break down something complex into smaller, more manageable parts.
+So, what is a component? In simple words, a component is a building block of an application that controls a part of your screen real estate, or your “view.” It does one thing and it does it well. For example, you may have a component to display a list of active chats in a messaging app (which in turn may have child components to display the details of the chat or the actual conversation). Or, you may have an input field that uses Angular’s two-way data binding to keep your markup in sync with your Javascript. Or, at the most elementary level, you can have a component that substitutes with an HTML template with no special functionality just because you wanted to break down something complex into smaller, more manageable parts.
 
 Now, I don’t believe too much in learning something by only reading about it, so let’s get our hands dirty and write our own component to see some sample usage. I will assume that you already have Typescript installed and have done the initial configuration required for any Angular 2 app. If you haven’t you can check out how to do so by [clicking on this link.](https://angular.io/docs/ts/latest/quickstart.html)
 
@@ -31,7 +31,7 @@ That’s it! That’s all you really need to have a component. Three things are 
 
 3. We export our `AppComponent` class so that we can import it elsewhere (in this case, we would import it in our main script so we can bootstrap our application).
 
-That’s a good start, but let’s get into a more complex example that showcases other powerful features of Angular and Typescript/ES2015. In the following example I've decided to stuff everything into one component. However, if you'd like to stick to best practices and divide the code into different components and services, or if you get lost at any point you can [check out the finished/refactored example here](https://github.com/david-meza/angular2-products/tree/master). Without any further ado, let’s make a quick page that displays a list of products. Let’s start from the index:
+That’s a good start, but let’s get into a more complex example that showcases other powerful features of Angular and Typescript/ES2015. In the following example, I've decided to stuff everything into one component. However, if you'd like to stick to best practices and divide the code into different components and services, or if you get lost at any point you can [check out the finished/refactored example here](https://github.com/david-meza/angular2-products/tree/master). Without any further ado, let’s make a quick page that displays a list of products. Let’s start with the index:
 
 ```html
 <html>
@@ -94,7 +94,7 @@ export class Product {
 }
 ```
 
-Next, we will create an `app.component.ts` file which is where the most of the magic happens. I've decided to stuff everything in here for demonstration purposes, but ideally you would want to extract the products array into its own service, the HTML template into its own file, and the product details into its own component. This is how the component will look like:
+Next, we will create an `app.component.ts` file which is where the magic happens. I've decided to stuff everything in here for demonstration purposes, but ideally you would want to extract the products array into its own service, the HTML template into its own file, and the product details into its own component. This is how the component will look like:
 
 ```javascript
 import {Component} from 'angular2/core';
@@ -221,9 +221,9 @@ I'll explain what is happening:
 
 1. We import from Component so that we can decorate our new component, and we import Product so we can create an array of products and have access to Typescript type infererences.
 
-2. We decorate our component with a selector property 'my-app' that finds `<my-app></my-app>` tags and inserts our component there. I decided to define template in this file instead of using a url so I can demonstrate how handy is the ES2015 template string syntax (no more long strings or plus-separated strings). Finally, the styleUrls property uses an absolute file path, and any styles applied will only affect the template in this scope.
+2. We decorate our component with a selector property 'my-app' that finds `<my-app></my-app>` tags and inserts our component there. I decided to define the template in this file instead of using a URL so I can demonstrate how handy is the ES2015 template string syntax (no more long strings or plus-separated strings). Finally, the styleUrls property uses an absolute file path, and any styles applied will only affect the template in this scope.
 
-3. The actual component only has a few properties outside of the decorator configuration: It has a `title` that we can bind to our template, a `products` array that we will iterate in our markup, a `selectedProduct` that is a scope variable that will initialize as undefined, and a `onSelect` method that will be run every time we click on a list item.
+3. The actual component only has a few properties outside of the decorator configuration: It has a `title` that we can bind to our template, a `products` array that we will iterate in our markup, a `selectedProduct` that is a scope variable that will initialize as undefined, and an `onSelect` method that will be run every time we click on a list item.
 
 4. Finally, we define a constant (`const` because I've hard-coded it in and won't change in runtime) `PRODUCTS` to mock an object that is usually returned by a service after an external request.
 
